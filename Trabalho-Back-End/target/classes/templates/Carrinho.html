@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Restaurante</title>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+</head>
+
+<body>
+
+
+	<ul class="nav nav-tabs">
+		<li class="nav-item"><a class="nav-link "
+			href="/pessoa/formularioCadastro">Cadastro</a></li>
+		<li class="nav-item"><a class="nav-link" href="/prato/listar">Galeria
+				de Pratos</a></li>
+		<li class="nav-item"><a class="nav-link  active" href="/carrinho/">Carrinhho</a>
+		</li>
+		<!-- 
+		<li class="nav-item"><a class="nav-link disabled" href="/prato/listar"
+			tabindex="-1" aria-disabled="true">Disabled</a></li>
+		 -->
+	</ul>
+
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="row">Nome</th>
+				<th scope="row">Preco</th>
+				<th scope="row">Quantidade</th>
+
+			</tr>
+		</thead>
+		<tbody>
+
+			<tr th:each="item: ${listaDeItens}">
+				<td th:text="${item.prato.nome}"></td>
+				<td th:text="${item.prato.preco}"></td>
+				<td th:text="${item.quantidade}"></td>
+				<td><a
+					th:href="@{/carrinho/removerItem/{codigo}(codigo = ${item.prato.codigo})}">
+						<button type="button" class="btn btn-danger">Excluir</button>
+				</a></td>
+
+			</tr>
+
+			<tr>
+				<td th:text="'Valor Total: '+${valorTotal}"></td>
+
+			</tr>
+			<tr>
+				<form action="/carrinho/confirmarCompra" method="post">
+					<td>Endereco: <input type="text" name="endereco"></td>
+					<td><input type="submit" value="Finalizar compra"
+						class="btn btn-primary"></td>
+					
+				</form>
+			</tr>
+
+		</tbody>
+	</table>
+
+	<script src="/js/bootstrap.min.js">
+		
+	</script>
+
+</body>
+</html>

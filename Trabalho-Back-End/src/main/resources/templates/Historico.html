@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> Restaurante </title>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+</head>
+<body>
+
+
+	<ul class="nav nav-tabs">
+		<li class="nav-item"><a class="nav-link"
+			href="/pessoa/formularioCadastro">Cadastro</a></li>
+		<li class="nav-item"><a class="nav-link" href="/prato/listar">Galeria
+				de Pratos</a></li>
+		<li class="nav-item active"><a class="nav-link" href="/carrinho/">Carrinhho</a>
+		</li>
+		<li class="nav-item "><a class="nav-link" href="/pedido/historico">Histórico</a></li>
+
+	</ul>
+
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Pedido</th>
+				<th scope="col">itens</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="pedido : ${listaDePedidos}">
+				<td th:text="${pedido.codigo}"></td>
+				<td th:each="item : ${pedido.item}"><span
+					th:text="${item.prato.nome}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>

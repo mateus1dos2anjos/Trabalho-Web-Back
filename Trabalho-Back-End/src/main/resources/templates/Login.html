@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title> Restaurante </title>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+</head>
+<body>
+
+	<ul class="nav nav-tabs">
+		<li class="nav-item"><a class="nav-link active"
+			href="/pessoa/formularioCadastro">Cadastro</a></li>
+		<li class="nav-item"><a class="nav-link" href="/prato/listar">Galeria
+				de Pratos</a></li>
+		<li class="nav-item"><a class="nav-link" href="/carrinho/">Carrinhho</a>
+		</li>
+		<!-- 
+		<li class="nav-item"><a class="nav-link disabled" href="/prato/listar"
+			tabindex="-1" aria-disabled="true">Disabled</a></li>
+		 -->
+	</ul>
+
+
+	<form method="POST">
+		Login: <input type="text" name="username"> <br> Senha: <input
+			type="password" name="password"> <br> <input
+			type="submit" value="Logar">
+
+	</form>
+
+</body>
+</html>

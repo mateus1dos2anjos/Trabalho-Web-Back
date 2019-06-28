@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title> Restaurante </title>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+</head>
+<body>
+
+	<ul class="nav nav-tabs">
+		<li class="nav-item"><a class="nav-link active"
+			href="/pessoa/formularioCadastro">Cadastro</a></li>
+		<li class="nav-item"><a class="nav-link" href="/prato/listar">Galeria
+				de Pratos</a></li>
+		<li class="nav-item"><a class="nav-link" href="/carrinho/">Carrinhho</a>
+		
+		</li>
+		<!-- 
+		<li class="nav-item"><a class="nav-link disabled" href="/prato/listar"
+			tabindex="-1" aria-disabled="true">Disabled</a></li>
+		 -->
+	</ul>
+
+	<form action="/prato/salvarPrato" method="post" th:object="${prato}"
+		enctype="multipart/form-data">
+
+		<input type="hidden" th:field="*{codigo}">
+
+
+		<div>
+			Nome: <input class="form-control" type="text" th:field="*{nome}"><br>
+		</div>
+
+		<div>
+			Imagem: <input type="file" name="img"> <br>
+			<div>
+
+				<div>
+					Preco: <input class="form-control" type="text" th:field="*{preco}">
+					<br>
+				</div>
+
+				<input type="submit" value="Cadastrar">
+	</form>
+
+	<script src="/js/bootstrap.min.js">
+		
+	</script>
+
+
+</body>
+</html>

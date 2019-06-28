@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+<meta charset="UTF-8">
+<title> Restaurante </title>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+</head>
+<body>
+
+	<ul class="nav nav-tabs">
+		<li class="nav-item"><a class="nav-link active"
+			href="/pessoa/formularioCadastro">Cadastro</a></li>
+		<li class="nav-item"><a class="nav-link" href="/prato/listar">Galeria
+				de Pratos</a></li>
+		<li class="nav-item"><a class="nav-link" href="/carrinho/">Carrinhho</a>
+		</li>
+		<li class="nav-item "><a class="nav-link" href="/pedido/historico">Histórico</a></li>
+		
+		
+		<!-- 
+		<li class="nav-item"><a class="nav-link disabled" href="/prato/listar"
+			tabindex="-1" aria-disabled="true">Disabled</a></li>
+		 -->
+	</ul>
+
+	<table class="table">
+		<thead>
+			<tr>
+				
+				<th scope="col">Nome</th>
+				<th scope="col">Preço</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="prato: ${listaDePratos}">
+			
+				<td th:text="${prato.nome}"></td>
+				<td th:text="${prato.preco}"></td>
+
+				<td sec:authorize="hasRole('ROLE_ADMIN')"><a
+					th:href="@{/prato/excluir/{codigo}(codigo = ${prato.codigo})}"
+					class="btn btn-danger">Excluir</a></td>
+
+				<td sec:authorize="hasRole('ROLE_ADMIN')"><a
+					th:href="@{/prato/atualizar/{codigo}(codigo = ${prato.codigo})}"
+					class="btn btn-primary">Atualizar</a></td>
+
+				<td sec:authorize="hasRole('ROLE_USER')"><a
+					th:href="@{/carrinho/adicionar/{codigo}(codigo = ${prato.codigo})}"
+					class="btn btn-primary">Adicionar</a></td>
+				
+				<td sec:authorize="isAnonymous()"><a
+					th:href="@{/pessoa/formularioCadastro}"
+					class="btn btn-primary">Adicionar</a></td>
+
+				<td><img width="200" height="200"
+					th:src="@{'/'+${prato.imagem}}"></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<script src="/js/bootstrap.min.js">
+		
+	</script>
+
+</body>
+</html>
+
+
